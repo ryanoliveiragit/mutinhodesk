@@ -1,0 +1,43 @@
+body {
+    margin: 0 auto;
+    background-color: white;
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+}
+.container {
+    width: 300px;
+}
+h1 {
+    color: black;
+}
+
+form {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+input {
+
+    border: 1px solid black;
+    border-radius: 2px;
+    background-color: white;
+    padding: .75rem 1.5rem;
+}
+button {
+    width: 100%;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  color: white;
+  font-family: inherit;
+  background-color: #6558F5;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
