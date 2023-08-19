@@ -3,6 +3,8 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import TextField from "@mui/material/TextField";
+import Axios from 'axios'
+import { useNavigate } from "react-router-dom";
 
 const loginFormSchema = z.object({
   email: z
@@ -21,19 +23,54 @@ const loginFormSchema = z.object({
 
 type LoginFormInputs = z.infer<typeof loginFormSchema>;
 export const LoginPage = () => {
+
+   const navigate = useNavigate()
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm<LoginFormInputs>({
     resolver: zodResolver(loginFormSchema),
   });
 
   const handleForm = (data: LoginFormInputs) => {
-    console.log(data, "enviando dados");
-    reset();
+    Axios.post("http://localhost:3300/login", {
+      email: data.email,
+      password: data.password,
+    })
+      .then((response) => {
+        if (
+          response.status === 200 &&
+          response.data.msg === "Usuário logado com sucesso!"
+        ) {
+          console.log("logado com sucesso");
+          localStorage.setItem("auth", "true");
+          localStorage.setItem("jwt", response.data.token);
+          localStorage.setItem("accessLevel", response.data.user.accessLevel);
+          const userData = response.data.user.email;
+          localStorage.setItem("user", JSON.stringify(userData));
+  
+          // Determine a rota de destino com base no nível de acesso
+          const destinationRoute =
+            response.data.user.accessLevel === "admin"
+              ? "/admin/chamados"
+              : "/user/chamados";
+  
+          navigate(destinationRoute);
+        }
+        console.log("Resposta inesperada do servidor:", response);
+      })
+      .catch((error) => {
+        if (error.response) {
+          switch (error.response.status) {
+            case 401:
+              console.log(error.response.data.msg);
+          }
+        }
+      });
   };
+  
+  
 
   return (
     <div className="container">

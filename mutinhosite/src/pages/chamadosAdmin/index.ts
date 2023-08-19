@@ -1,0 +1,1 @@
+export {AdminChamados} from './chamadosAdmin'

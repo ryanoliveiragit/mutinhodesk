@@ -1,0 +1,1 @@
+export {Chamados} from './chamados'
