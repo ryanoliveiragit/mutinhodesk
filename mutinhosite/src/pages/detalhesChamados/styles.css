@@ -1,7 +1,4 @@
-body {
-    background-color: black;
-}
-.calledAdmin {
+.detailsCalled {
     margin: 0 auto;
     background-color: white;
     display: flex;
@@ -9,7 +6,4 @@ body {
     min-width: 420px;
     justify-content: center;
     min-height: calc(100vh - 10vh);
-}
-.component {
-    width: 55rem;
 }

@@ -1,0 +1,30 @@
+.headerUser {
+    background-color: #6558F5;
+    height: 1.5rem;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+h2 {
+    color: white;
+}
+h3 {
+    color: white;
+}
+ul {
+    list-style: none;
+}
+li {
+    color: white;
+    font-weight: 500;
+}
+.flex {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+a {
+    text-decoration: none;
+    color: white;
+}

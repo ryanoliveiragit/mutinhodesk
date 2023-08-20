@@ -4,7 +4,8 @@ import {
   addProducts,
   Login,
   Register,
-  deleteProducts
+  deleteProducts,
+  updateFields
 } from "../controllers/produtos.js";
 import jwt from 'jsonwebtoken';
 import {secretKey} from '../tokens/secret-token.js'
@@ -25,7 +26,7 @@ const validJwt = (req, res, next) => {
 
   next()
 }
-
+router.put("/:id", updateFields)
 router.get("/", validJwt, getProducts);
 router.post("/login", Login)
 router.post("/register", Register)

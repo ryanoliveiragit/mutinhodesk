@@ -1,0 +1,1 @@
+export {MeusChamadosPage} from './meusChamados'

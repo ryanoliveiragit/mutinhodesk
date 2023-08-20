@@ -73,9 +73,11 @@ export const LoginPage = () => {
   
 
   return (
+   <div>
     <div className="container">
+      <form onSubmit={handleSubmit(handleForm)} className="form">
       <h1>MutantWhats</h1>
-      <form onSubmit={handleSubmit(handleForm)}>
+      <br />
         <TextField
           error={!!errors.email?.message}
           helperText={errors.email?.message}
@@ -94,5 +96,6 @@ export const LoginPage = () => {
         <button type="submit">Login</button>
       </form>
     </div>
+   </div>
   );
 };
